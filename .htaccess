@@ -1,0 +1,17 @@
+#Options +FollowSymLinks
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^klud.fr$ [OR]
+RewriteCond %{HTTP_HOST} ^www.klud.fr$
+RewriteRule ^(.*)$ http://www.klud-design.fr/$1 [R=301,L]
+
+<IfModule mod_headers.c>
+
+<FilesMatch "\\.(css)$">
+Header set Cache-Control "max-age=10000, public"
+</FilesMatch>
+
+<FilesMatch "\\.(js)$">
+Header set Cache-Control "max-age=10000, private"
+</FilesMatch>
+
+</IfModule>
